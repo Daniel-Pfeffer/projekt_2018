@@ -1,0 +1,43 @@
+Family E-Banking
+
+Eltern haben mehr Rechte als Kinder.
+Eltern können ohne dass Kinder wissen aufträge und dauerauträge machen.
+wenn Kinder daueraufträge oder aufträge aufgeben, werden die Eltern informiert und müssen dies bestätigen.
+falls der betrag für normAuftrag unter 10€ ist wird nur eine Mitteilung geschickt.(Betrag wählbar)
+Wenn ein Auftrag bestellt wird, wird eine mail mit einem schlüssel an email verschickt welcher einzugeben ist.
+dieser schlüssel ist nach 5 minuten nicht mehr gültig, dass heist der Auftrag wird abgebrochen.
+Konten können ins negativ gehen, außer Kindkonto.
+man kann nur von einer gültigen ID und zu einer gültigen ID schicken.
+Verknüpfung des "normalen" Kontos durch Dauerüberweisung.
+
+Datenbank
+    Personen:
+        PersonenID: Primärschlüssel
+        prename: Name des Kontoinhaber
+        lastname:
+        Passwort: password of user
+        Master: wenn null kein Master (Master an wem die email geschickt wird, wenn Konto= Kindkonto) Master = personenID
+        E-Mail: email zum versenden
+
+    Kontos:
+        KontoID: ID des Kontos Primärschlüssel
+        PersonenID: Fremdschlüssel
+        Kontotyp: Ob Eltern/Kind
+        stand: wieviel Geld auf konto sein haben tuen tut
+        auftragsID: mehrere möglich (Fremdschlüssel)
+
+    Aufträge:
+        AuftragID: Primärschlüssel
+        Source: kontoId von wo ausgehend
+        Dest: kontoid zu wem gehend
+        moneyMoney: zu übermittelnder Geldbetrag
+        dauer: 1/0 0 wenn nein
+        dayFirst: Tag an dem bestätigt
+        KeyErwartet: einzugebender Key
+
+
+Funktionalität zusatz:
+    Dropdown für Kategorien für Aufträge
+    Chart
+    monatliches Limit für Kindkonten
+    verschlüsselung der Pakete von JS und PHP

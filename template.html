@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Templates</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <style>
+        /* Für Konten
+        .hr {
+            padding: 5px !important;
+            margin: 5px !important;
+            width: 100% !important;
+        }
+
+        .kontoTyp {
+            color: grey !important;
+            font-size: small !important;
+
+        }
+
+        #header {
+            padding-top: 10px !important;
+        }
+
+        #kontoansicht {
+            -webkit-box-shadow: 5px 1px 10px 1px rgba(0, 0, 0, 0.08);
+            box-shadow: 5px 1px 10px 1px rgba(0, 0, 0, 0.08);
+            margin-right: 80% !important;
+            border-left: 6px solid deeppink !important;
+        }
+
+        .geld {
+            color: green !important;
+            float: right !important;
+            font-size: large !important;
+        }
+
+        .nameAv {
+            color: gray !important;
+            font-size: small !important;
+            font-style: italic !important;
+        }
+
+        .nameClass {
+            font-size: large !important;
+
+        }
+
+        .settings {
+            float: right;
+            margin-top: -7%;
+            transition: all 0.4s;
+        }
+
+        .settings:hover {
+            transform: rotate(60deg);
+        }*/
+        /*CSS für */
+    </style>
+</head>
+<body>
+<div id="settingsWindow" style="display: none">
+    <div id="headerSettings">
+        <a>Einstellungen $nameAv</a>
+    </div>
+</div>
+<label>
+    <img src="icons/other/trending_up.svg" id="pic"/>
+    <input type="submit" style="display: none;" onclick="changePic()"/>
+</label>
+<div id="ATX">
+    <a onclick="addLabel()">Add Label with click</a>
+</div>
+<script>
+    function addLabel() {
+        const node = document.getElementById("ATX");
+        let img = document.createElement("img");
+        img.setAttribute("src","icons/other/trending_up.svg");
+        node.appendChild(img);
+    }
+</script>
+</body>
+</html>

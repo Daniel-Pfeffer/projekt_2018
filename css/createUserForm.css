@@ -1,0 +1,23 @@
+#hiddenBoi{
+    display: none;
+}
+#insteadSubmit{
+    display: none;
+}
+.dropdown-menu {
+    -webkit-box-shadow: 0 0 10px 1px rgba(0,0,0,1) !important;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,1) !important;
+    position:absolute !important;
+    transform: translate3d(-375px, 15px, 0px) !important;
+    will-change:transform !important;
+    min-width: 375px !important;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+input{
+    min-width: 400px !important;
+}
+#errorExecute{
+
+}

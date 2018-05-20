@@ -1,0 +1,48 @@
+.hr {
+    padding: 5px !important;
+    margin: 5px !important;
+    width: 100% !important;
+}
+
+.kontoTyp {
+    color: grey !important;
+    font-size: small !important;
+
+}
+
+#header {
+    padding-top: 10px !important;
+}
+
+#kontoansicht {
+    -webkit-box-shadow: 5px 1px 10px 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 5px 1px 10px 1px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid red !important;
+}
+
+.geld {
+    color: green !important;
+    float: right !important;
+    font-size: large !important;
+}
+
+.nameAv {
+    color: gray !important;
+    font-size: small !important;
+    font-style: italic !important;
+}
+
+.nameClass {
+    font-size: large !important;
+
+}
+
+.settings {
+    float: right !important;
+    margin-top: -0.5em !important;
+    transition: all 0.4s !important;
+}
+
+.settings:hover {
+    transform: rotate(60deg) !important;
+}

@@ -1,0 +1,22 @@
+<!--<div class="ml-3" id="kontoansicht">
+    <div id="headerKonto" class="justify-content-center pl-2">
+        <a class="nameAv">Finanzübersicht</a><br>
+        <a class="nameClass">NameOfKonto</a>
+        <label class="settings mr-3">
+            <input type="button" style="display: none;" onclick="alert('Settings Button')"/>
+            <img src="icons/black/settings.svg" width="30px" height="30px"/>
+        </label><br>
+    </div>
+    <hr style="width: 100%;">
+    <div class="kontos pl-3 mr-3" style="clear:both">
+        <a class="name">Daniel</a><br>
+        <a class="kontoTyp">Hauptkonto</a><br>
+        <a class="stand">Stand:</a>
+        <a class="geld">20000€</a>
+        <hr class="hr">
+        <a class="name">Daniel</a><br>
+        <a class="kontoTyp">Nebenkonto</a><br>
+        <a class="stand">Stand:</a>
+        <a class="geld">1000€</a>
+    </div>
+</div> Ende Kontoansicht-->
