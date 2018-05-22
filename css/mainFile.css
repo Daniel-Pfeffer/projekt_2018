@@ -46,3 +46,33 @@
 .settings:hover {
     transform: rotate(60deg) !important;
 }
+
+#umsatzverlauf {
+    -webkit-box-shadow: 5px 1px 10px 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 5px 1px 10px 1px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid blueviolet !important;
+}
+
+.date {
+    float: left !important;
+    display: inline !important;
+}
+
+.amount {
+    float: right !important;
+}
+
+.IBAN_Other {
+    font-size: smaller !important;
+    font-style: italic !important;
+    color: grey !important;
+}
+
+.middle {
+    margin-left: 10%!important;
+    float: left !important;
+    display: inline !important;
+}
+#umsatzverlaufSettings{
+    margin-top: -0.5%!important;
+}
