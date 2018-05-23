@@ -17,7 +17,7 @@ $dbUser = $_SESSION['dbUser'];
 
 $conn = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
 
-$sql = "SELECT prename, kontoName, stand FROM konten,user WHERE userID = " . $user[0] . " AND user.id = " . $user[0];
+$sql = "SELECT * from transfers WHERE destID=$user[0] OR sourceID=$user[0];";
 $result = $conn->query($sql);
 
 $output = "";
@@ -25,11 +25,13 @@ while ($res = $result->fetch_array(MYSQLI_ASSOC)) {
     if ($output != "") {
         $output .= ",";
     }
-    $output .= '{"name":"' . $res["prename"] . '",';
-    $output .= '"kontoTyp":"' . $res["kontoName"] . '",';
-    $output .= '"geld":"' . $res["stand"] . '"}';
+    $output .= '{"source":"' . $res["sourceID"] . '",';
+    $output .= '"dest":"' . $res["destID"] . '",';
+    $output .= '"purpose":"' . $res["purpose"] . '",';
+    $output .= '"date":"' . $res["date"] . '",';
+    $output .= '"amount":"' . $res["amount"] . '"}';
 }
-$output = '{"fullKonto":[' . $output . ']}';
+$output = '{"fullList":[' . $output . ']}';
 $conn->close();
 
 echo($output);

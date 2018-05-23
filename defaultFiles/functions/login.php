@@ -37,11 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             header("Location: ../spicyBank.php");
             exit;
-        } else{
+        } else {
             header("Location: ../startRegister.php");
             exit;
         }
-    } else{
+    } else {
         header("Location: ../startRegister.php");
         exit;
     }

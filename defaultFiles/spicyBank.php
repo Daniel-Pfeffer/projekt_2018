@@ -7,15 +7,15 @@
  */
 
 session_start();
-
+include("../library/betterIFs.php");
 $user = $_SESSION['user'];
 $dbName = $_SESSION['dbName'];
 $dbHost = $_SESSION['host'];
 $dbPassword = $_SESSION['dbPassword'];
 $dbUser = $_SESSION['dbUser'];
-
-$conn = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
-
+if (betterIFs::false_nt) {
+    $conn = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
+}
 ?>
 <html>
 <head>
@@ -34,7 +34,7 @@ $conn = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
     <meta charset="utf-8">
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="../css/chartjs/canvasjs.min.js"></script>
     <link rel="stylesheet" href="../css/mainFile.css">
 </head>
 <body>
@@ -77,72 +77,83 @@ $conn = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
                                 <a class="geld">{{x.geld}}</a>
                             </div>
                             <!------------->
+                            <div style="display: inline" class="pl-3">
+                                <div></div>
+                                <input type="text" placeholder="Kontoname" name="kontoName" id="kontoName"
+                                       ng-model="kontoVal"/>
+                                <label ng-click="createKonto()">
+                                    <img src="../icons/black/add.svg"/>
+                                </label>
+                            </div>
                             <script>
                                 let app = angular.module('listKonto', []);
                                 app.controller('listKontoCtrl', function ($scope, $http) {
+                                    $scope.kontoVal = "KontoName";
                                     $scope.reload = function () {
                                         $http.get("functions/listKonten.php")
                                             .then(function (response) {
                                                 $scope.konten = response.data.fullKonto;
                                             });
                                     };
+                                    $scope.createKonto = function () {
+                                        $http.get("functions/createKonto.php?kontoName=" + $scope.kontoVal)
+                                            .then(function (response) {
+                                                $scope.kontoVal = "";
+                                                $scope.reload();
+                                            });
+                                    };
                                     $scope.reload();
                                 });
                             </script>
-                            <div style="display: inline" class="pl-3">
-                                <input type="text" placeholder="Kontoname" name="kontoName" id="kontoName"/>
-                                <label onclick="createKonto(document.getElementById('kontoName'))">
-                                    <img src="../icons/black/add.svg"/>
-                                </label>
-                            </div>
                         </div>
                     </div>
-                    <script>
-                        function createKonto(textInput) {
-                            let nameOfNewKonto = textInput.value;
-                            textInput.value = "";
-                            var xml = new XMLHttpRequest();
-                            xml.open("GET", "functions/createKonto.php?kontoName=" + nameOfNewKonto);
-                            xml.onreadystatechange = function () {
-                                if (this.readyState === 4 && this.status === 200) {
-                                    angular.element(document.getElementById('completeKontoView'))
-                                }
-                            };
-                            xml.send();
-                        }
-                    </script>
                 </div>
             </div>
             <div class="col-sm ml-auto mr-auto" id="stockPrice">
                 <h2>Abonnierte Aktienkurse</h2>
                 <?php
-                //include_once("functions/stockMarket.php");
+                include_once("functions/stockMarket.php");
 
                 ?>
             </div>
         </div>
-        <div class="col" id="turnover">
-            <div class="col-xs-6 ml-auto" ng-app="sales">
-                <h2>Umsatzverlauf</h2>
-                <div ng-controller="listSales">
-                    <div ng-repeat="x in salesDisp">
-
+        <div class="row" id="turnover">
+            <div class="col-sm mb-5 mr-auto ml-auto">
+                <div class="ml-3" id="umsatzverlauf">
+                    <div id="headerUmsatz" class="justify-content-center pl-2">
+                        <a class="nameAv">Umsatzverlauf</a><br>
+                        <a class="nameClass">NameOfUser</a>
+                        <label class="settings mr-3" id="umsatzverlaufSettings">
+                            <input type="button" style="display: none;" onclick="alert('Settings Button')"/>
+                            <img src="../icons/black/settings.svg" width="30px" height="30px"/>
+                        </label><br>
+                    </div>
+                    <script>
+                        app.controller('listSales', function ($scope, $http) {
+                            $scope.list = function () {
+                                $http.get("functions/listTransfer.php")
+                                    .then(function (response) {
+                                        $scope.salesDisp = response.data.fullList;
+                                    });
+                            };
+                            $scope.list();
+                        });
+                    </script>
+                    <hr style="width: 100%;">
+                    <div class="kontos pl-3 mr-3" style="clear:both">
+                        <div ng-controller="listSales">
+                            <div ng-repeat="x in salesDisp">
+                                <a class="date">{{x.date}}</a>
+                                <div class="middle">
+                                    <a class="purpose">{{x.purpose}}</a><br>
+                                    <a class="IBAN_Other">{{x.source}}</a><br><!--ÄNDERN-->
+                                </div>
+                                <a class="amount">{{x.amount}}€</a><br>
+                                <br>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div ng-controller="addContract">
-
-                </div>
-                <script>
-                    let sales = angular.module("sales", []);
-                    sales.controller("listSales", function ($scope, $http) {
-                        $scope.list = function () {
-                            $http.get("functions/listTransfer.php")
-                                .then(function (response) {
-                                    $scope.salesDisp = response.data.salesJson;
-                                });
-                        };
-                    });
-                </script>
             </div>
         </div>
     </div>

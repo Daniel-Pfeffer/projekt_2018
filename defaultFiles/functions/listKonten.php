@@ -30,5 +30,4 @@ while ($res = $result->fetch_array(MYSQLI_ASSOC)) {
 }
 $output = '{"fullKonto":[' . $output . ']}';
 $conn->close();
-echo "Na";
 echo($output);
