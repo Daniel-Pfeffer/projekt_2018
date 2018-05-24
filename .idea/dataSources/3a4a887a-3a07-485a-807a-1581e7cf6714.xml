@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="One Project to rule them all">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.9">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
     <root id="1">
       <DefaultCasing>mixed/mixed</DefaultCasing>
     </root>
@@ -909,231 +909,277 @@
     <table id="229" parent="6" name="stocks">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="230" parent="6" name="user">
+    <table id="230" parent="6" name="transfers">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="231" parent="226" name="id">
+    <table id="231" parent="6" name="user">
+      <Engine>InnoDB</Engine>
+    </table>
+    <column id="232" parent="226" name="id">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="226" name="selector">
+    <column id="233" parent="226" name="selector">
       <Position>2</Position>
-      <DataType>char(40)|0s</DataType>
+      <DataType>char(40)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="226" name="hashedValidator">
+    <column id="234" parent="226" name="hashedValidator">
       <Position>3</Position>
-      <DataType>char(64)|0s</DataType>
+      <DataType>char(64)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="226" name="userid">
+    <column id="235" parent="226" name="userid">
       <Position>4</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="226" name="expires">
+    <column id="236" parent="226" name="expires">
       <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="236" parent="226" name="userid_id_foreign">
+    <index id="237" parent="226" name="userid_id_foreign">
       <ColNames>userid</ColNames>
     </index>
-    <key id="237" parent="226" name="PRIMARY">
+    <key id="238" parent="226" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="238" parent="226" name="userid_id_foreign">
+    <foreign-key id="239" parent="226" name="userid_id_foreign">
       <ColNames>userid</ColNames>
       <RefSchemaName>project</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="239" parent="227" name="userID">
+    <column id="240" parent="227" name="userID">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="227" name="stockID">
+    <column id="241" parent="227" name="stockID">
       <Position>2</Position>
-      <DataType>int(5)|0s</DataType>
+      <DataType>int(5)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="241" parent="227" name="favStock_stocks_stockID_fk">
+    <index id="242" parent="227" name="favStock_stocks_stockID_fk">
       <ColNames>stockID</ColNames>
     </index>
-    <key id="242" parent="227" name="PRIMARY">
+    <key id="243" parent="227" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID
 stockID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="243" parent="227" name="favStock_user_id_fk">
+    <foreign-key id="244" parent="227" name="favStock_user_id_fk">
       <ColNames>userID</ColNames>
       <RefSchemaName>project</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="244" parent="227" name="favStock_stocks_stockID_fk">
+    <foreign-key id="245" parent="227" name="favStock_stocks_stockID_fk">
       <ColNames>stockID</ColNames>
       <RefSchemaName>project</RefSchemaName>
       <RefTableName>stocks</RefTableName>
       <RefColNames>stockID</RefColNames>
     </foreign-key>
-    <column id="245" parent="228" name="kontoID">
+    <column id="246" parent="228" name="kontoID">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="228" name="userID">
+    <column id="247" parent="228" name="userID">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="228" name="kontoName">
+    <column id="248" parent="228" name="kontoName">
       <Position>3</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="228" name="kontoType">
+    <column id="249" parent="228" name="kontoType">
       <Position>4</Position>
-      <DataType>tinyint(1)|0s</DataType>
+      <DataType>tinyint(1)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="228" name="stand">
+    <column id="250" parent="228" name="stand">
       <Position>5</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="228" name="IBAN">
+    <column id="251" parent="228" name="IBAN">
       <Position>6</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="251" parent="228" name="konten_IBAN">
+    <index id="252" parent="228" name="konten_IBAN">
       <ColNames>IBAN</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="252" parent="228" name="userIDKont_id_foreign">
+    <index id="253" parent="228" name="userIDKont_id_foreign">
       <ColNames>userID</ColNames>
     </index>
-    <key id="253" parent="228" name="PRIMARY">
+    <key id="254" parent="228" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>kontoID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="254" parent="228" name="konten_IBAN">
+    <key id="255" parent="228" name="konten_IBAN">
       <ColNames>IBAN</ColNames>
       <UnderlyingIndexName>konten_IBAN</UnderlyingIndexName>
     </key>
-    <foreign-key id="255" parent="228" name="userIDKont_id_foreign">
+    <foreign-key id="256" parent="228" name="userIDKont_id_foreign">
       <ColNames>userID</ColNames>
       <RefSchemaName>project</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="256" parent="229" name="stockID">
+    <column id="257" parent="229" name="stockID">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="229" name="stockIndex">
+    <column id="258" parent="229" name="stockIndex">
       <Position>2</Position>
-      <DataType>varchar(5)|0s</DataType>
+      <DataType>varchar(5)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="229" name="stockOtherName">
+    <column id="259" parent="229" name="stockOtherName">
       <Position>3</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="259" parent="229" name="stocks_stockName_uindex">
+    <index id="260" parent="229" name="stocks_stockName_uindex">
       <ColNames>stockIndex</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="260" parent="229" name="PRIMARY">
+    <key id="261" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>stockID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="261" parent="229" name="stocks_stockName_uindex">
+    <key id="262" parent="229" name="stocks_stockName_uindex">
       <ColNames>stockIndex</ColNames>
       <UnderlyingIndexName>stocks_stockName_uindex</UnderlyingIndexName>
     </key>
-    <column id="262" parent="230" name="id">
+    <column id="263" parent="230" name="destIBAN">
       <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>varchar(20)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="264" parent="230" name="sourceIBAN">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="265" parent="230" name="purpose">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="230" name="amount">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="267" parent="230" name="date">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="268" parent="230" name="transferForeign">
+      <ColNames>destIBAN</ColNames>
+    </index>
+    <index id="269" parent="230" name="transferForeign2">
+      <ColNames>sourceIBAN</ColNames>
+    </index>
+    <foreign-key id="270" parent="230" name="transferForeign">
+      <ColNames>destIBAN</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>konten</RefTableName>
+      <RefColNames>IBAN</RefColNames>
+    </foreign-key>
+    <foreign-key id="271" parent="230" name="transferForeign2">
+      <ColNames>sourceIBAN</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>konten</RefTableName>
+      <RefColNames>IBAN</RefColNames>
+    </foreign-key>
+    <column id="272" parent="231" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="230" name="prename">
+    <column id="273" parent="231" name="prename">
       <Position>2</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_bin</Collation>
     </column>
-    <column id="264" parent="230" name="lastname">
+    <column id="274" parent="231" name="lastname">
       <Position>3</Position>
-      <DataType>varchar(20)|0s</DataType>
+      <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="230" name="email">
+    <column id="275" parent="231" name="email">
       <Position>4</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="230" name="password">
+    <column id="276" parent="231" name="password">
       <Position>5</Position>
-      <DataType>text|0s</DataType>
+      <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="230" name="master">
+    <column id="277" parent="231" name="master">
       <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="230" name="isVerified">
+    <column id="278" parent="231" name="isVerified">
       <Position>7</Position>
-      <DataType>tinyint(1)|0s</DataType>
+      <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="269" parent="230" name="email">
+    <index id="279" parent="231" name="email">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="270" parent="230" name="master_ID_Foreign">
+    <index id="280" parent="231" name="master_ID_Foreign">
       <ColNames>master</ColNames>
     </index>
-    <key id="271" parent="230" name="PRIMARY">
+    <key id="281" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="272" parent="230" name="email">
+    <key id="282" parent="231" name="email">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>email</UnderlyingIndexName>
     </key>
-    <foreign-key id="273" parent="230" name="master_ID_Foreign">
+    <foreign-key id="283" parent="231" name="master_ID_Foreign">
       <ColNames>master</ColNames>
       <RefSchemaName>project</RefSchemaName>
       <RefTableName>user</RefTableName>

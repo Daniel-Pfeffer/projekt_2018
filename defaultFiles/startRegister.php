@@ -41,7 +41,6 @@ if (isset($_COOKIE['spicyBankUserSecure'])) {
     }
 }
 $deleteBoi = "DELETE auth_tokens FROM project.auth_tokens WHERE (expires - " . time() . ") < 0";
-$console->log($deleteBoi);
 $conn->query($deleteBoi);
 ?>
 <html>
@@ -99,7 +98,6 @@ $conn->query($deleteBoi);
 </nav>
 
 <div class="container mt-5">
-
     <form action="functions/register.php" method="post" onsubmit="return checkAll()">
         <div class="form-row">
             <div class="form-group col-md-6">

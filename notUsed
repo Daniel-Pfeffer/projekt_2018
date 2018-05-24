@@ -1,4 +1,4 @@
-<!--<div class="ml-3" id="kontoansicht">
+<div class="ml-3" id="kontoansicht">
     <div id="headerKonto" class="justify-content-center pl-2">
         <a class="nameAv">Finanzübersicht</a><br>
         <a class="nameClass">NameOfKonto</a>
@@ -19,4 +19,4 @@
         <a class="stand">Stand:</a>
         <a class="geld">1000€</a>
     </div>
-</div> Ende Kontoansicht-->
+</div>

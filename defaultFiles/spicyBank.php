@@ -34,6 +34,9 @@ if (betterIFs::false_nt) {
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
     <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
     <script src="../css/chartjs/canvasjs.min.js"></script>
     <link rel="stylesheet" href="../css/mainFile.css">
 </head>
@@ -112,12 +115,11 @@ if (betterIFs::false_nt) {
             <div class="col-sm ml-auto mr-auto" id="stockPrice">
                 <h2>Abonnierte Aktienkurse</h2>
                 <?php
-                include_once("functions/stockMarket.php");
-
+                //include_once("functions/stockMarket.php");
                 ?>
             </div>
         </div>
-        <div class="row" id="turnover">
+        <div class="row" id="turnover" ng-controller="listSales">
             <div class="col-sm mb-5 mr-auto ml-auto">
                 <div class="ml-3" id="umsatzverlauf">
                     <div id="headerUmsatz" class="justify-content-center pl-2">
@@ -136,12 +138,23 @@ if (betterIFs::false_nt) {
                                         $scope.salesDisp = response.data.fullList;
                                     });
                             };
-                            $scope.list();
+                            $scope.autoFill = function () {
+                                if ($scope.nameInput.trim().length !== 0) {
+                                    $http.get("functions/autoComplete.php?q=" + $scope.nameInput)
+                                        .then(function (response) {
+                                            $scope.autoComplete = response.data.output;
+                                        });
+                                }
+                            };
+                            $scope.nameChosen = function (item) {
+                                $scope.nameInput = item.x.iban;
+                            };
+                            //$scope.list();
                         });
                     </script>
                     <hr style="width: 100%;">
-                    <div class="kontos pl-3 mr-3" style="clear:both">
-                        <div ng-controller="listSales">
+                    <div>
+                        <div class="kontos pl-3 mr-3" style="clear:both">
                             <div ng-repeat="x in salesDisp">
                                 <a class="date">{{x.date}}</a>
                                 <div class="middle">
@@ -151,7 +164,26 @@ if (betterIFs::false_nt) {
                                 <a class="amount">{{x.amount}}€</a><br>
                                 <br>
                             </div>
+                            <div id="controllerForm">
+                                <button id="buttonExpandForm">+</button>
+                                <script>
+                                    $(document).ready(function () {
+                                        $("#buttonExpandForm").click(function () {
+                                            $("#formTransfer").toggle();
+                                        });
+                                    });
+                                </script>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                <div id="transferForm">
+                    <label>
+                        <input type="text" ng-model="nameInput" placeholder="Name der Person oder IBAN"
+                               ng-change="autoFill()" style="width: 250px"/>
+                    </label>
+                    <div ng-repeat="x in autoComplete">
+                        <a id="{{x.iban}}" ng-click="nameChosen(this)">{{x.prename}} {{x.lastname}} {{x.kontoName}}</a>
                     </div>
                 </div>
             </div>

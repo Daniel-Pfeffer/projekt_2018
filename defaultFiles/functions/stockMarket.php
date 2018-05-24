@@ -165,10 +165,9 @@ foreach ($symbolsList as $index) {
             //TODO: FAVOURITE MANAGEMENT
             xml.open("GET", "functions/manageFavourite.php?symbol=" + symbol + "&method=" + mode);
             xml.send();
-
         }
     </script>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="../css/chartjs/canvasjs.min.js"></script>
 <?php
 drawOutput();
 ?>
