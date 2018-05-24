@@ -16,7 +16,7 @@ $dbUser = $_SESSION['dbUser'];
 
 $conn = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
 
-$sql = "SELECT prename, kontoName, stand FROM konten,user WHERE userID = " . $user[0] . " AND user.id = " . $user[0];
+$sql = "SELECT prename, kontoName, stand,IBAN FROM konten,user WHERE userID = " . $user[0] . " AND user.id = " . $user[0];
 $result = $conn->query($sql);
 
 $output = "";
@@ -26,6 +26,7 @@ while ($res = $result->fetch_array(MYSQLI_ASSOC)) {
     }
     $output .= '{"name":"' . $res["prename"] . '",';
     $output .= '"kontoTyp":"' . $res["kontoName"] . '",';
+    $output .= '"iban":"' . $res["IBAN"] . '",';
     $output .= '"geld":"' . $res["stand"] . '"}';
 }
 $output = '{"fullKonto":[' . $output . ']}';

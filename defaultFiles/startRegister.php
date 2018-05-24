@@ -20,7 +20,7 @@ if (isset($_COOKIE['spicyBankUserSecure'])) {
     $selector = $valueOfCookie[0];
     $validator = explode("^^", $valueOfCookie[1]);
 
-    $sql = "SELECT hashedValidator,userid,expires from auth_tokens where selector like \"$selector\" ";
+    $sql = "SELECT hashedValidator, userid, expires FROM auth_tokens WHERE selector LIKE \"$selector\" ";
     $res = $conn->query($sql);
     if ($res) {
         $res = $res->fetch_assoc();
@@ -28,7 +28,7 @@ if (isset($_COOKIE['spicyBankUserSecure'])) {
             if (password_verify($valueOfCookie[1], $res['hashedValidator'])) {
                 $console->log("Welcome to 2nd if");
                 $oneID = $res["userid"];
-                $getUserSpecifiedThings = "SELECT email, password from user where id = \"$oneID\"";
+                $getUserSpecifiedThings = "SELECT email, password FROM user WHERE id = \"$oneID\"";
                 $userAttr = $conn->query($getUserSpecifiedThings);
                 if ($userAttr) {
                     $isRem = true;
@@ -82,7 +82,7 @@ $conn->query($deleteBoi);
             </div>
             <div class="form-group">
                 <label for="dropdownFormPassword2">Password</label>
-                <input type="password" class="form-control" autocompelete="new-password" id="dropdownFormPassword2"
+                <input type="password" class="form-control" id="dropdownFormPassword2"
                        placeholder="Password"
                        name="passwordLogin"/>
             </div>

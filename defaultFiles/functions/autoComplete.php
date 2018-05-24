@@ -23,7 +23,7 @@ if (!$conn->error) {
         k.IBAN
         FROM user u
           INNER JOIN konten k ON u.id = k.userID
-        WHERE u.prename LIKE '$searchQuery%' OR k.IBAN LIKE '$searchQuery%';";
+        WHERE u.prename LIKE '$searchQuery%' OR k.IBAN LIKE '$searchQuery%' OR u.lastname LIKE '$searchQuery%';";
     $result = $conn->query($sql);
 
     $output = "";

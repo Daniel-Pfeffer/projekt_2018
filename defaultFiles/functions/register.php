@@ -47,9 +47,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $console->log($conn->error);
     }
 }
-/*
- * Register Error:
- * 0: No Error
- * 2: Critical Error
- * 1: Email already registered
- */
