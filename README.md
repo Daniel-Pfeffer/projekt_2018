@@ -1,6 +1,3 @@
-Hello dear Succers who visits my webproject.
-I the great Daniel Pepperonis,
-allow you to download and use every file, which is present on this repository, if you name me in the commnents
-
-With best greetings,
-Your wholesome Boi.
+Simple Webservice which aims to be a kind of an ebanking system.
+It was my 2018 3 Class Webproject and mainly developed in PHP/plain JS and parts were written in angularjs
+You can use everything in this Project if needed
